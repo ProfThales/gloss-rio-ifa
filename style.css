@@ -1,9 +1,13 @@
 :root{
     --primary:#003366;
     --secondary:#005fa3;
+
     --background:#f5f8fc;
     --card:#ffffff;
     --text:#111111;
+
+    --heading-color:#003366;
+
     --focus:#ffcc00;
     --border:#d7dce2;
 }
@@ -23,27 +27,50 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     background:var(--background);
     color:var(--text);
+
     line-height:1.7;
+
     overflow-wrap:break-word;
+    word-wrap:break-word;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
+/* Link para pular diretamente ao conteúdo principal */
 .skip-link{
     position:absolute;
     left:-9999px;
+    top:auto;
 }
 
 .skip-link:focus{
     left:1rem;
     top:1rem;
+
     background:white;
+    color:black;
+
     padding:1rem;
-    z-index:999;
+
+    border-radius:8px;
+
+    z-index:9999;
 }
 
+/* Cabeçalho principal */
 .hero{
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
     color:white;
+
     padding:5rem 1.5rem;
+
     text-align:center;
 }
 
@@ -62,6 +89,7 @@ h1{
     margin-bottom:2rem;
 }
 
+/* Botões de acessibilidade */
 .controls{
     display:flex;
     gap:1rem;
@@ -71,15 +99,30 @@ h1{
 
 button{
     border:none;
+
     padding:1rem 1.2rem;
+
     border-radius:12px;
+
     background:white;
     color:var(--primary);
+
     font-size:1rem;
     font-weight:bold;
+
     cursor:pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
+button:hover{
+    transform:translateY(-2px);
+}
+
+/* Navegação */
 nav{
     background:white;
     border-bottom:2px solid var(--border);
@@ -88,53 +131,91 @@ nav{
 .menu{
     max-width:1200px;
     margin:auto;
+
     list-style:none;
+
     display:flex;
     justify-content:center;
+
     gap:2rem;
+
     padding:1rem;
+
     flex-wrap:wrap;
 }
 
+.menu a{
+    font-weight:600;
+}
+
+/* Links sempre sublinhados */
 a{
     color:var(--secondary);
     text-decoration:underline;
 }
 
+a:hover{
+    text-decoration-thickness:3px;
+}
+
+/* Conteúdo principal */
 main{
     max-width:1200px;
+
     margin:auto;
+
     padding:2rem 1rem;
 }
 
+/* Cartões */
 .card{
     background:var(--card);
+
     border-radius:20px;
+
     padding:2rem;
+
     margin-bottom:2rem;
+
     box-shadow:0 6px 20px rgba(0,0,0,0.08);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .card img{
     width:100%;
-    border-radius:16px;
-    margin-bottom:1.5rem;
     height:auto;
+
+    border-radius:16px;
+
+    margin-bottom:1.5rem;
+
+    display:block;
 }
 
+/* Títulos */
 h2{
-    color:var(--primary);
+    color:var(--heading-color);
+
     margin-bottom:1rem;
+
     font-size:2rem;
 }
 
 h3{
-    color:var(--primary);
+    color:var(--heading-color);
+
     margin-top:2rem;
     margin-bottom:1rem;
+
+    font-size:1.5rem;
 }
 
-p, ul, dl{
+p,
+ul,
+dl{
     margin-bottom:1.5rem;
 }
 
@@ -152,28 +233,98 @@ dd{
     margin-left:1rem;
 }
 
+/* Rodapé */
 footer{
     background:var(--primary);
+
     color:white;
+
     text-align:center;
+
     padding:2rem;
 }
 
+/* Foco altamente visível */
 a:focus-visible,
-button:focus-visible{
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
     outline:4px solid var(--focus);
     outline-offset:4px;
+
+    box-shadow:0 0 0 6px rgba(0,0,0,0.5);
 }
+
+/* ===========================
+   MODO ALTO CONTRASTE
+=========================== */
 
 .high-contrast{
     --background:#000000;
     --card:#111111;
+
     --text:#ffffff;
+
     --primary:#000000;
     --secondary:#ffff00;
+
+    --heading-color:#ffffff;
+
     --border:#ffffff;
+
     --focus:#00ffff;
 }
+
+/* Garante que todos os títulos permaneçam visíveis */
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast h4,
+.high-contrast h5,
+.high-contrast h6{
+    color:white;
+}
+
+/* Links amarelos e sublinhados */
+.high-contrast a{
+    color:#ffff00;
+}
+
+/* Botões claros para destacar no fundo escuro */
+.high-contrast button{
+    background:white;
+    color:black;
+
+    border:2px solid white;
+}
+
+/* Navegação */
+.high-contrast nav{
+    background:#111111;
+}
+
+/* Cartões */
+.high-contrast .card{
+    background:#111111;
+    border:2px solid white;
+}
+
+/* Rodapé */
+.high-contrast footer{
+    background:#000000;
+    border-top:2px solid white;
+}
+
+/* Cabeçalho */
+.high-contrast .hero{
+    background:#000000;
+    border-bottom:2px solid white;
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
 
 @media (max-width:768px){
 
@@ -189,7 +340,26 @@ button:focus-visible{
         font-size:1.5rem;
     }
 
+    h3{
+        font-size:1.25rem;
+    }
+
     .controls{
         flex-direction:column;
+        align-items:center;
+    }
+
+    button{
+        width:100%;
+        max-width:280px;
+    }
+
+    .menu{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
+        padding:1.5rem;
     }
 }
