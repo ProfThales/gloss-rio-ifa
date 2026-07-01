@@ -1,290 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento Web Acessível para Pessoas com Baixa Visão</title>
 
-    <!-- Permite zoom livre -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
 
-    <title>IFA - Glossário de Óptica</title>
-
-    <style>
-        :root{
-            --cor-fundo:#ffffff;
-            --cor-texto:#111111;
-            --cor-primaria:#003366;
-            --cor-secundaria:#0055aa;
-            --cor-borda:#d0d0d0;
-            --cor-foco:#ffbf00;
-        }
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        html{
-            font-size:100%;
-            scroll-behavior:smooth;
-        }
-
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background:var(--cor-fundo);
-            color:var(--cor-texto);
-
-            /* WCAG */
-            line-height:1.7;
-
-            font-size:1rem;
-            overflow-wrap:break-word;
-            word-wrap:break-word;
-        }
-
-        header{
-            background:var(--cor-primaria);
-            color:white;
-            padding:2rem 1rem;
-        }
-
-        nav{
-            margin-top:1rem;
-        }
-
-        nav a{
-            color:white;
-            text-decoration:underline;
-            margin-right:1rem;
-        }
-
-        main{
-            width:min(95%,70rem);
-            margin:auto;
-            padding:2rem 1rem;
-        }
-
-        article,
-        section{
-            margin-bottom:3rem;
-            padding:2rem;
-            border:2px solid var(--cor-borda);
-            border-radius:1rem;
-            background:#fafafa;
-        }
-
-        h1{
-            font-size:2.5rem;
-            margin-bottom:1rem;
-        }
-
-        h2{
-            font-size:2rem;
-            margin-bottom:1rem;
-            color:var(--cor-primaria);
-        }
-
-        h3{
-            font-size:1.5rem;
-            margin-bottom:1rem;
-            color:var(--cor-primaria);
-        }
-
-        p{
-            margin-bottom:2rem;
-            max-width:75ch;
-        }
-
-        img{
-            width:100%;
-            height:auto;
-            border-radius:1rem;
-            display:block;
-        }
-
-        a{
-            color:var(--cor-secundaria);
-            text-decoration:underline;
-            font-weight:600;
-        }
-
-        button{
-            font-size:1rem;
-            padding:0.8rem 1rem;
-            border:none;
-            border-radius:0.5rem;
-            cursor:pointer;
-            background:var(--cor-primaria);
-            color:white;
-        }
-
-        .controles{
-            display:flex;
-            flex-wrap:wrap;
-            gap:1rem;
-            margin-bottom:2rem;
-        }
-
-        /* foco altamente visível */
-        a:focus-visible,
-        button:focus-visible{
-            outline:4px solid var(--cor-foco);
-            outline-offset:4px;
-            box-shadow:0 0 0 6px black;
-        }
-
-        footer{
-            background:var(--cor-primaria);
-            color:white;
-            padding:2rem;
-            text-align:center;
-        }
-
-        /* Alto contraste */
-        .alto-contraste{
-            --cor-fundo:#000000;
-            --cor-texto:#ffffff;
-            --cor-primaria:#000000;
-            --cor-secundaria:#ffff00;
-            --cor-borda:#ffffff;
-            --cor-foco:#00ffff;
-        }
-
-        .alto-contraste article,
-        .alto-contraste section{
-            background:#111111;
-        }
-
-        /* Reflow para zoom e telas pequenas */
-        @media (max-width:768px){
-
-            html{
-                font-size:112.5%;
-            }
-
-            h1{
-                font-size:2rem;
-            }
-
-            h2{
-                font-size:1.6rem;
-            }
-
-            h3{
-                font-size:1.3rem;
-            }
-
-            .controles{
-                flex-direction:column;
-            }
-        }
-    </style>
+    <meta name="description" content="Projeto educacional sobre desenvolvimento web acessível para pessoas com baixa visão.">
 </head>
 
 <body>
 
-<header>
-    <h1>Glossário</h1>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
 
-    <p>
-        Projeto Integrador de Robótica, Programação, Física e Tecnociências
-    </p>
+<header class="hero">
+    <div class="hero-content">
+        <h1>Desenvolvimento Web Acessível para Pessoas com Baixa Visão</h1>
 
-    <nav aria-label="Navegação principal">
-        <a href="#optica">Óptica</a>
-        <a href="#acessibilidade">Baixa visão</a>
-    </nav>
+        <p class="subtitle">
+            Promovendo inclusão digital através do desenvolvimento de interfaces acessíveis.
+        </p>
+
+        <div class="controls" aria-label="Ferramentas de acessibilidade">
+            <button id="increase-font">A+</button>
+            <button id="decrease-font">A-</button>
+            <button id="toggle-contrast">Alto Contraste</button>
+        </div>
+    </div>
 </header>
 
-<main>
+<nav aria-label="Navegação principal">
+    <ul class="menu">
+        <li><a href="#baixa-visao">Baixa Visão</a></li>
+        <li><a href="#acessibilidade">Acessibilidade Web</a></li>
+        <li><a href="#glossario">Glossário</a></li>
+    </ul>
+</nav>
 
-    <section class="controles" aria-label="Ferramentas de acessibilidade">
-        <button onclick="aumentarFonte()">
-            Aumentar texto
-        </button>
+<main id="conteudo">
 
-        <button onclick="diminuirFonte()">
-            Diminuir texto
-        </button>
+    <section class="card">
+        <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+            alt="Estudantes utilizando tecnologia para aprendizagem."
+        >
 
-        <button onclick="alternarContraste()">
-            Alternar alto contraste
-        </button>
+        <h2>Objetivo do Projeto</h2>
+
+        <p>
+            Este projeto apresenta práticas e tecnologias que tornam a web mais acessível para
+            pessoas com baixa visão, contribuindo para a inclusão digital e para o desenvolvimento
+            de interfaces mais humanas e eficientes.
+        </p>
     </section>
 
-    <article id="optica">
-        <h2>Óptica</h2>
-
-        <p>
-            A óptica é o ramo da física que estuda a luz,
-            sua propagação e os fenômenos relacionados à formação
-            de imagens e à visão humana.
-        </p>
-
-        <p>
-            Consulte a definição completa no
-            <a href="https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/%C3%B3ptica/" target="_blank">
-                Dicionário Michaelis
-            </a>.
-        </p>
-
+    <section class="card" id="baixa-visao">
         <img
-            src="https://beduka.com/blog/wp-content/uploads/2019/06/CapaOptica.jpg"
-            alt="Pessoa segurando uma lente para demonstrar conceitos relacionados ao estudo da óptica."
+            src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
+            alt="Pessoa utilizando computador com recursos de acessibilidade."
         >
-    </article>
 
-    <article id="acessibilidade">
-        <h3>
-            Acessibilidade óptica para visualização de sites por pessoas com baixa visão
-        </h3>
+        <h2>O que é Baixa Visão?</h2>
 
         <p>
-            Sites acessíveis devem oferecer contraste elevado,
-            permitir aumento de texto, funcionar corretamente
-            com zoom de até 200%, evitar rolagem horizontal e
-            fornecer indicadores de foco altamente visíveis.
+            A baixa visão é uma condição visual em que a pessoa apresenta redução significativa da
+            capacidade visual, mesmo utilizando correção óptica convencional. Recursos digitais
+            acessíveis podem ampliar significativamente a autonomia e a qualidade da experiência
+            online desses usuários.
         </p>
+    </section>
+
+    <section class="card" id="acessibilidade">
+        <img
+            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
+            alt="Código de programação representando desenvolvimento web."
+        >
+
+        <h2>Boas Práticas de Desenvolvimento Web Acessível</h2>
+
+        <ul>
+            <li>Contraste adequado entre texto e fundo.</li>
+            <li>Suporte a zoom de até 200%.</li>
+            <li>Navegação completa utilizando teclado.</li>
+            <li>Indicadores de foco altamente visíveis.</li>
+            <li>Uso de HTML semântico.</li>
+            <li>Tipografia flexível utilizando unidades relativas.</li>
+        </ul>
+
+        <h3>Como adaptar um site para auxiliar pessoas com baixa visão</h3>
 
         <p>
-            Também é importante utilizar HTML semântico,
-            links sublinhados, unidades relativas como rem,
-            espaçamento adequado entre linhas e compatibilidade
-            com leitores e ampliadores de tela.
+            Sites acessíveis podem utilizar aumento de fonte, alto contraste, espaçamento ampliado,
+            compatibilidade com leitores de tela e navegação por teclado. Essas medidas melhoram a
+            legibilidade, a navegação e a experiência do usuário.
         </p>
-    </article>
+    </section>
+
+    <section class="card" id="glossario">
+        <h2>Glossário</h2>
+
+        <dl>
+            <dt>Baixa Visão</dt>
+            <dd>Redução significativa da capacidade visual que não é totalmente corrigida por óculos ou lentes.</dd>
+
+            <dt>Contraste</dt>
+            <dd>Diferença visual entre elementos, como texto e fundo.</dd>
+
+            <dt>Reflow</dt>
+            <dd>Capacidade do layout se reorganizar quando o usuário utiliza zoom.</dd>
+
+            <dt>HTML Semântico</dt>
+            <dd>Uso correto das tags HTML para representar o significado do conteúdo.</dd>
+
+            <dt>WCAG</dt>
+            <dd>Diretrizes internacionais para acessibilidade na web.</dd>
+        </dl>
+    </section>
 
 </main>
 
 <footer>
-    <p>
-        IFA — Projeto Integrador de Robótica, Programação,
-        Física e Tecnociências
-    </p>
+    <p>Projeto Educacional • 2026</p>
 </footer>
 
-<script>
-
-    let tamanho = 100;
-
-    function aumentarFonte(){
-        tamanho += 10;
-        document.documentElement.style.fontSize = tamanho + "%";
-    }
-
-    function diminuirFonte(){
-        if(tamanho > 80){
-            tamanho -= 10;
-            document.documentElement.style.fontSize = tamanho + "%";
-        }
-    }
-
-    function alternarContraste(){
-        document.body.classList.toggle("alto-contraste");
-    }
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
+```
