@@ -1,28 +1,28 @@
-```javascript
 let fontScale = 100;
 
-const increaseButton = document.getElementById("increase-font");
-const decreaseButton = document.getElementById("decrease-font");
-const contrastButton = document.getElementById("toggle-contrast");
-increaseButton.addEventListener("click", () => {
-    fontScale += 10;
+document.addEventListener("DOMContentLoaded", () => {
 
-    if(fontScale > 200){
-        fontScale = 200;
-    }
-    document.documentElement.style.fontSize = `${fontScale}%`;
-});
+    const increaseButton = document.getElementById("increase-font");
+    const decreaseButton = document.getElementById("decrease-font");
+    const contrastButton = document.getElementById("toggle-contrast");
 
-decreaseButton.addEventListener("click", () => {
-    fontScale -= 10;
-
-    if(fontScale < 80){
-        fontScale = 80;
+    if (increaseButton) {
+        increaseButton.addEventListener("click", () => {
+            fontScale = Math.min(fontScale + 10, 200);
+            document.documentElement.style.fontSize = `${fontScale}%`;
+        });
     }
 
-    document.documentElement.style.fontSize = `${fontScale}%`;
-});
+    if (decreaseButton) {
+        decreaseButton.addEventListener("click", () => {
+            fontScale = Math.max(fontScale - 10, 80);
+            document.documentElement.style.fontSize = `${fontScale}%`;
+        });
+    }
 
-contrastButton.addEventListener("click", () => {
-    document.body.classList.toggle("high-contrast");
+    if (contrastButton) {
+        contrastButton.addEventListener("click", () => {
+            document.body.classList.toggle("high-contrast");
+        });
+    }
 });
