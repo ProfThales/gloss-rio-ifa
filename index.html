@@ -1,114 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Permite zoom livre -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>IFA - Glossário de Óptica</title>
 
     <style>
+        :root{
+            --cor-fundo:#ffffff;
+            --cor-texto:#111111;
+            --cor-primaria:#003366;
+            --cor-secundaria:#0055aa;
+            --cor-borda:#d0d0d0;
+            --cor-foco:#ffbf00;
+        }
+
         *{
             margin:0;
             padding:0;
             box-sizing:border-box;
         }
 
+        html{
+            font-size:100%;
+            scroll-behavior:smooth;
+        }
+
         body{
             font-family: Arial, Helvetica, sans-serif;
-            line-height:1.8;
-            background-color:#f4f4f4;
-            color:#333;
-            transition:0.3s;
+            background:var(--cor-fundo);
+            color:var(--cor-texto);
+
+            /* WCAG */
+            line-height:1.7;
+
+            font-size:1rem;
+            overflow-wrap:break-word;
+            word-wrap:break-word;
         }
 
         header{
-            background:#005792;
+            background:var(--cor-primaria);
             color:white;
-            padding:20px;
-            text-align:center;
+            padding:2rem 1rem;
         }
 
-        .container{
-            max-width:1000px;
+        nav{
+            margin-top:1rem;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:underline;
+            margin-right:1rem;
+        }
+
+        main{
+            width:min(95%,70rem);
             margin:auto;
-            padding:20px;
+            padding:2rem 1rem;
         }
 
-        .card{
-            background:white;
-            padding:20px;
-            border-radius:10px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom:20px;
+        article,
+        section{
+            margin-bottom:3rem;
+            padding:2rem;
+            border:2px solid var(--cor-borda);
+            border-radius:1rem;
+            background:#fafafa;
+        }
+
+        h1{
+            font-size:2.5rem;
+            margin-bottom:1rem;
+        }
+
+        h2{
+            font-size:2rem;
+            margin-bottom:1rem;
+            color:var(--cor-primaria);
+        }
+
+        h3{
+            font-size:1.5rem;
+            margin-bottom:1rem;
+            color:var(--cor-primaria);
+        }
+
+        p{
+            margin-bottom:2rem;
+            max-width:75ch;
         }
 
         img{
             width:100%;
-            max-width:600px;
+            height:auto;
+            border-radius:1rem;
             display:block;
-            margin:20px auto;
-            border-radius:10px;
         }
 
-        .acessibilidade{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-            justify-content:center;
-            margin-bottom:20px;
+        a{
+            color:var(--cor-secundaria);
+            text-decoration:underline;
+            font-weight:600;
         }
 
         button{
-            padding:10px 15px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            background:#005792;
-            color:white;
             font-size:1rem;
+            padding:0.8rem 1rem;
+            border:none;
+            border-radius:0.5rem;
+            cursor:pointer;
+            background:var(--cor-primaria);
+            color:white;
         }
 
-        button:hover{
-            opacity:0.9;
+        .controles{
+            display:flex;
+            flex-wrap:wrap;
+            gap:1rem;
+            margin-bottom:2rem;
         }
 
-        .alto-contraste{
-            background:black;
-            color:yellow;
-        }
-
-        .alto-contraste .card{
-            background:#111;
-            color:yellow;
-        }
-
-        .alto-contraste header{
-            background:black;
-            border-bottom:2px solid yellow;
+        /* foco altamente visível */
+        a:focus-visible,
+        button:focus-visible{
+            outline:4px solid var(--cor-foco);
+            outline-offset:4px;
+            box-shadow:0 0 0 6px black;
         }
 
         footer{
-            text-align:center;
-            padding:20px;
-            margin-top:20px;
-            background:#005792;
+            background:var(--cor-primaria);
             color:white;
+            padding:2rem;
+            text-align:center;
         }
 
+        /* Alto contraste */
+        .alto-contraste{
+            --cor-fundo:#000000;
+            --cor-texto:#ffffff;
+            --cor-primaria:#000000;
+            --cor-secundaria:#ffff00;
+            --cor-borda:#ffffff;
+            --cor-foco:#00ffff;
+        }
+
+        .alto-contraste article,
+        .alto-contraste section{
+            background:#111111;
+        }
+
+        /* Reflow para zoom e telas pequenas */
         @media (max-width:768px){
+
+            html{
+                font-size:112.5%;
+            }
+
             h1{
-                font-size:1.8rem;
+                font-size:2rem;
             }
 
             h2{
-                font-size:1.4rem;
+                font-size:1.6rem;
             }
 
             h3{
-                font-size:1.2rem;
+                font-size:1.3rem;
             }
 
-            body{
-                font-size:18px;
+            .controles{
+                flex-direction:column;
             }
         }
     </style>
@@ -118,79 +186,104 @@
 
 <header>
     <h1>Glossário</h1>
-    <p>Projeto Integrador de Robótica, Programação, Física e Tecnociências</p>
+
+    <p>
+        Projeto Integrador de Robótica, Programação, Física e Tecnociências
+    </p>
+
+    <nav aria-label="Navegação principal">
+        <a href="#optica">Óptica</a>
+        <a href="#acessibilidade">Baixa visão</a>
+    </nav>
 </header>
 
-<div class="container">
+<main>
 
-    <div class="acessibilidade">
-        <button onclick="aumentarFonte()">A+</button>
-        <button onclick="diminuirFonte()">A-</button>
-        <button onclick="alternarContraste()">Alto Contraste</button>
-    </div>
+    <section class="controles" aria-label="Ferramentas de acessibilidade">
+        <button onclick="aumentarFonte()">
+            Aumentar texto
+        </button>
 
-    <section class="card">
+        <button onclick="diminuirFonte()">
+            Diminuir texto
+        </button>
+
+        <button onclick="alternarContraste()">
+            Alternar alto contraste
+        </button>
+    </section>
+
+    <article id="optica">
         <h2>Óptica</h2>
 
         <p>
-            A palavra óptica (ou ótica) possui múltiplos significados e pode se referir
-            à área da ciência que estuda a luz, aos fenômenos relacionados à visão,
-            à formação de imagens e ao comportamento da luz ao interagir com diferentes materiais.
+            A óptica é o ramo da física que estuda a luz,
+            sua propagação e os fenômenos relacionados à formação
+            de imagens e à visão humana.
         </p>
 
         <p>
-            Saiba mais no dicionário Michaelis:
-            <a href="https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/%C3%B3ptica/"
-            target="_blank">
-                Definição de Óptica
-            </a>
+            Consulte a definição completa no
+            <a href="https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/%C3%B3ptica/" target="_blank">
+                Dicionário Michaelis
+            </a>.
         </p>
 
-        <img src="https://beduka.com/blog/wp-content/uploads/2019/06/CapaOptica.jpg"
-             alt="Mão segurando uma lente para demonstrar conceitos de óptica">
-    </section>
+        <img
+            src="https://beduka.com/blog/wp-content/uploads/2019/06/CapaOptica.jpg"
+            alt="Pessoa segurando uma lente para demonstrar conceitos relacionados ao estudo da óptica."
+        >
+    </article>
 
-    <section class="card">
-        <h3>Acessibilidade óptica para visualização de sites por pessoas com baixa visão</h3>
+    <article id="acessibilidade">
+        <h3>
+            Acessibilidade óptica para visualização de sites por pessoas com baixa visão
+        </h3>
 
         <p>
-            Um site pode ser adaptado para auxiliar pessoas com baixa visão por meio
-            do uso de fontes ampliáveis, alto contraste entre texto e fundo,
-            espaçamento adequado entre linhas, imagens com descrições alternativas
-            (atributo ALT), compatibilidade com leitores de tela e navegação por teclado.
+            Sites acessíveis devem oferecer contraste elevado,
+            permitir aumento de texto, funcionar corretamente
+            com zoom de até 200%, evitar rolagem horizontal e
+            fornecer indicadores de foco altamente visíveis.
         </p>
 
         <p>
-            Essas adaptações aumentam a usabilidade e promovem a inclusão digital,
-            permitindo que usuários com diferentes níveis de acuidade visual tenham
-            acesso às informações de forma confortável e eficiente.
+            Também é importante utilizar HTML semântico,
+            links sublinhados, unidades relativas como rem,
+            espaçamento adequado entre linhas e compatibilidade
+            com leitores e ampliadores de tela.
         </p>
-    </section>
+    </article>
 
-</div>
+</main>
 
 <footer>
-    <p>IFA - Projeto Integrador de Robótica, Programação, Física e Tecnociências</p>
+    <p>
+        IFA — Projeto Integrador de Robótica, Programação,
+        Física e Tecnociências
+    </p>
 </footer>
 
 <script>
-    let tamanhoFonte = 100;
+
+    let tamanho = 100;
 
     function aumentarFonte(){
-        tamanhoFonte += 10;
-        document.body.style.fontSize = tamanhoFonte + "%";
+        tamanho += 10;
+        document.documentElement.style.fontSize = tamanho + "%";
     }
 
     function diminuirFonte(){
-        if(tamanhoFonte > 70){
-            tamanhoFonte -= 10;
-            document.body.style.fontSize = tamanhoFonte + "%";
+        if(tamanho > 80){
+            tamanho -= 10;
+            document.documentElement.style.fontSize = tamanho + "%";
         }
     }
 
     function alternarContraste(){
         document.body.classList.toggle("alto-contraste");
     }
+
 </script>
 
 </body>
