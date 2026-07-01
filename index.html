@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFA - Glossário de Óptica</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            line-height:1.8;
+            background-color:#f4f4f4;
+            color:#333;
+            transition:0.3s;
+        }
+
+        header{
+            background:#005792;
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        .container{
+            max-width:1000px;
+            margin:auto;
+            padding:20px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom:20px;
+        }
+
+        img{
+            width:100%;
+            max-width:600px;
+            display:block;
+            margin:20px auto;
+            border-radius:10px;
+        }
+
+        .acessibilidade{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            justify-content:center;
+            margin-bottom:20px;
+        }
+
+        button{
+            padding:10px 15px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            background:#005792;
+            color:white;
+            font-size:1rem;
+        }
+
+        button:hover{
+            opacity:0.9;
+        }
+
+        .alto-contraste{
+            background:black;
+            color:yellow;
+        }
+
+        .alto-contraste .card{
+            background:#111;
+            color:yellow;
+        }
+
+        .alto-contraste header{
+            background:black;
+            border-bottom:2px solid yellow;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            margin-top:20px;
+            background:#005792;
+            color:white;
+        }
+
+        @media (max-width:768px){
+            h1{
+                font-size:1.8rem;
+            }
+
+            h2{
+                font-size:1.4rem;
+            }
+
+            h3{
+                font-size:1.2rem;
+            }
+
+            body{
+                font-size:18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Glossário</h1>
+    <p>Projeto Integrador de Robótica, Programação, Física e Tecnociências</p>
+</header>
+
+<div class="container">
+
+    <div class="acessibilidade">
+        <button onclick="aumentarFonte()">A+</button>
+        <button onclick="diminuirFonte()">A-</button>
+        <button onclick="alternarContraste()">Alto Contraste</button>
+    </div>
+
+    <section class="card">
+        <h2>Óptica</h2>
+
+        <p>
+            A palavra óptica (ou ótica) possui múltiplos significados e pode se referir
+            à área da ciência que estuda a luz, aos fenômenos relacionados à visão,
+            à formação de imagens e ao comportamento da luz ao interagir com diferentes materiais.
+        </p>
+
+        <p>
+            Saiba mais no dicionário Michaelis:
+            <a href="https://michaelis.uol.com.br/moderno-portugues/busca/portugues-brasileiro/%C3%B3ptica/"
+            target="_blank">
+                Definição de Óptica
+            </a>
+        </p>
+
+        <img src="https://beduka.com/blog/wp-content/uploads/2019/06/CapaOptica.jpg"
+             alt="Mão segurando uma lente para demonstrar conceitos de óptica">
+    </section>
+
+    <section class="card">
+        <h3>Acessibilidade óptica para visualização de sites por pessoas com baixa visão</h3>
+
+        <p>
+            Um site pode ser adaptado para auxiliar pessoas com baixa visão por meio
+            do uso de fontes ampliáveis, alto contraste entre texto e fundo,
+            espaçamento adequado entre linhas, imagens com descrições alternativas
+            (atributo ALT), compatibilidade com leitores de tela e navegação por teclado.
+        </p>
+
+        <p>
+            Essas adaptações aumentam a usabilidade e promovem a inclusão digital,
+            permitindo que usuários com diferentes níveis de acuidade visual tenham
+            acesso às informações de forma confortável e eficiente.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <p>IFA - Projeto Integrador de Robótica, Programação, Física e Tecnociências</p>
+</footer>
+
+<script>
+    let tamanhoFonte = 100;
+
+    function aumentarFonte(){
+        tamanhoFonte += 10;
+        document.body.style.fontSize = tamanhoFonte + "%";
+    }
+
+    function diminuirFonte(){
+        if(tamanhoFonte > 70){
+            tamanhoFonte -= 10;
+            document.body.style.fontSize = tamanhoFonte + "%";
+        }
+    }
+
+    function alternarContraste(){
+        document.body.classList.toggle("alto-contraste");
+    }
+</script>
+
+</body>
+</html>
